@@ -1,19 +1,13 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import {AuthContextProvider} from './context/authContext'
-
+import "./App.css";
+import { AuthContextProvider } from "./context/authContext";
+import { MyRoutes } from "./routers/routes";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-
   return (
     <AuthContextProvider>
-      <span>Hello world</span>
+      <MyRoutes />
     </AuthContextProvider>
-  )
+  );
 }
 
-export default App
+export default App;

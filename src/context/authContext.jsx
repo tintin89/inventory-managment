@@ -6,19 +6,20 @@ const AuthContext = createContext();
 export const AuthContextProvider = ({children})=>{
     const [user,setUser] = useState([]);
     useEffect(()=>{
-        const {data:authListener} = supabase.auth.onAuthStateChange((event, session) => {
-            async (event,session)=>{
-                console.log(event,session);
+        const {data:{subscription}} = supabase.auth.onAuthStateChange((_event, session) => {
+            console.log('mirando',_event,session)
+            /*async (event,session)=>{
+                console.log('hello',event,session);
                 if(session?.user==null)
                    setUser(null);
 
                 setUser(session?.user);   
-            }        
+            } */       
           
           })
           
           // call unsubscribe to remove the callback
-          subscription.unsubscribe()
+          return ()=>subscription.unsubscribe()
     },[])
 
     return (
