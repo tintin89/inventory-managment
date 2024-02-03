@@ -1,12 +1,13 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { LinksArray, SecondarylinksArray } from "../../utils/staticData";
-import { ToogleTheme } from "./ToogleTheme";
 import { NavLink } from "react-router-dom";
 import { v } from "../../styles/variables";
-import { useState } from "react";
+import { ToogleTheme } from "./ToogleTheme";
 
 export function HamburgerMenu() {
   const [click, setClick] = useState(false);
+
   return (
     <Container>
       <Navbar>
@@ -111,7 +112,7 @@ const HamburgerMenuSpan = styled.span`
   .bars {
     width: 100%;
     height: 4px;
-    background-color: rgb(176, 92, 255);
+    background-color: ${(props)=>props.theme.text};
     border-radius: 4px;
   }
 
@@ -126,10 +127,38 @@ const HamburgerMenuSpan = styled.span`
 `;
 const Menu = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   list-style: none;
   z-index: 10;
+  flex-direction: column;
+  position:fixed;
+  inset: 0 0 0 0;
+  width: 100vw;
+  background-color: ${({theme})=>`rgba(${theme.bodyRgba},0.85)`};
+  backdrop-filter:blur(3px);
+  transform:${(props)=>props.$click == "true" ? "translateY(0)" : "translateY(1000%)"};
+  transition:all 0.3s ease;
+  .LinkContainer{
+    &:hover{
+      background:${(props)=>props.theme.bgAlpha};
+    }
+    .Links{
+      width:100vw;
+      display:flex;
+      align-items:center;
+      text-decoration:none;
+      color:${(props)=>props.theme.text};
+      height:80px;
+      .Linkicon{
+        padding:${v.smSpacing} ${v.mdSpacing};
+        display:flex;
+        svg{
+          font-size:25px;
+        }
+      }
+    }
+  }
 `;
 const Divider = styled.div`
   height: 1px;
