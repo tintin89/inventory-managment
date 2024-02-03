@@ -5,6 +5,7 @@ import { createContext, useState } from "react";
 import { Dark, Light } from "./styles/themes";
 import { Device } from "./styles/breackpoints";
 import { Sidebar } from "./components/organism/sidebar/Sidebar";
+import { HamburgerMenu } from "./components/organism/HamburgerMenu";
 
 export const ThemeContext = createContext(null);
 
@@ -21,7 +22,9 @@ function App() {
             <section className="ContentSidebar">
               <Sidebar state={sidebarOpen} setState={()=>setSidebarOpen(!sidebarOpen)}/>
             </section>
-            <section className="ContentMenuHam"> Burger Menu</section>
+            <section className="ContentMenuHam">
+              <HamburgerMenu/>
+            </section>
             <section className="ContentRoutes">
               <MyRoutes />
             </section>
@@ -39,7 +42,7 @@ const Container = styled.main`
   .ContentSidebar {
     display: none;
   }
-  .ContentmenuHam {
+  .ContentMenuHam {
     display: block;
     position: absolute;
     left: 20px;
