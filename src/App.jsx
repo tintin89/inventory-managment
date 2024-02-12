@@ -6,6 +6,7 @@ import { Dark, Light } from "./styles/themes";
 import { Device } from "./styles/breackpoints";
 import { Sidebar } from "./components/organism/sidebar/Sidebar";
 import { HamburgerMenu } from "./components/organism/HamburgerMenu";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export const ThemeContext = createContext(null);
 
@@ -20,15 +21,19 @@ function App() {
         <AuthContextProvider>
           <Container className={sidebarOpen ? "active" : ""}>
             <section className="ContentSidebar">
-              <Sidebar state={sidebarOpen} setState={()=>setSidebarOpen(!sidebarOpen)}/>
+              <Sidebar
+                state={sidebarOpen}
+                setState={() => setSidebarOpen(!sidebarOpen)}
+              />
             </section>
             <section className="ContentMenuHam">
-              <HamburgerMenu/>
+              <HamburgerMenu />
             </section>
             <section className="ContentRoutes">
               <MyRoutes />
             </section>
           </Container>
+          <ReactQueryDevtools initialIsOpen={false} />
         </AuthContextProvider>
       </ThemeProvider>
     </ThemeContext.Provider>
