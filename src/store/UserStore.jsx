@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { AddUser } from "../supabase/CrudUser";
+
 export const useUserStore = create((get, set) => ({
   adminRegister: async (p) => {
     const { data, error } = await supabase.auth.signUp({

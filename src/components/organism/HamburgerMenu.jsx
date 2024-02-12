@@ -15,11 +15,11 @@ export function HamburgerMenu() {
           <HamburgerMenuSpan onClick={() => setClick(!click)}>
             <label
               className={click ? "toggle active" : "toggle"}
-              htmlFor="checkbox"
+              htmlFor="hamburgerCheckbox"
             >
-              <div className="bars" id="bar1"></div>
-              <div className="bars" id="bar2"></div>
-              <div className="bars" id="bar3"></div>
+              <div className="bars" id="hamburgerBar1"></div>
+              <div className="bars" id="hamburgerBar2"></div>
+              <div className="bars" id="hamburgerBar3"></div>
             </label>
           </HamburgerMenuSpan>
         </section>
@@ -92,16 +92,16 @@ const HamburgerMenuSpan = styled.span`
         position: absolute;
         transition-duration: 0.5s;
       }
-      #bar2 {
+      #hamburgerBar2 {
         transform: scaleX(0);
         transition-duration: 0.5s;
       }
-      #bar1 {
+      #hamburgerBar1 {
         width: 100%;
         transform: rotate(45deg);
         transition-duration: 0.5s;
       }
-      #bar3 {
+      #hamburgerBar3 {
         width: 100%;
         transform: rotate(-45deg);
         transition-duration: 0.5s;
@@ -112,16 +112,16 @@ const HamburgerMenuSpan = styled.span`
   .bars {
     width: 100%;
     height: 4px;
-    background-color: ${(props)=>props.theme.text};
+    background-color: ${(props) => props.theme.text};
     border-radius: 4px;
   }
 
-  #bar2 {
+  #hamburgerBar2 {
     transition-duration: 0.8s;
   }
 
-  #bar1,
-  #bar3 {
+  #hamburgerBar1,
+  #hamburgerBar3 {
     width: 70%;
   }
 `;
@@ -132,29 +132,30 @@ const Menu = styled.div`
   list-style: none;
   z-index: 10;
   flex-direction: column;
-  position:fixed;
+  position: fixed;
   inset: 0 0 0 0;
   width: 100vw;
-  background-color: ${({theme})=>`rgba(${theme.bodyRgba},0.85)`};
-  backdrop-filter:blur(3px);
-  transform:${(props)=>props.$click == "true" ? "translateY(0)" : "translateY(1000%)"};
-  transition:all 0.3s ease;
-  .LinkContainer{
-    &:hover{
-      background:${(props)=>props.theme.bgAlpha};
+  background-color: ${({ theme }) => `rgba(${theme.bodyRgba},0.85)`};
+  backdrop-filter: blur(3px);
+  transform: ${(props) =>
+    props.$click == "true" ? "translateY(0)" : "translateY(1000%)"};
+  transition: all 0.3s ease;
+  .LinkContainer {
+    &:hover {
+      background: ${(props) => props.theme.bgAlpha};
     }
-    .Links{
-      width:100vw;
-      display:flex;
-      align-items:center;
-      text-decoration:none;
-      color:${(props)=>props.theme.text};
-      height:80px;
-      .Linkicon{
-        padding:${v.smSpacing} ${v.mdSpacing};
-        display:flex;
-        svg{
-          font-size:25px;
+    .Links {
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: ${(props) => props.theme.text};
+      height: 80px;
+      .Linkicon {
+        padding: ${v.smSpacing} ${v.mdSpacing};
+        display: flex;
+        svg {
+          font-size: 25px;
         }
       }
     }

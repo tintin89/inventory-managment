@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { Icon } from "../atoms/Icon";
-export function Btnsave({ funcion, titulo, bgcolor, icono, url }) {
+
+export function Btnsave({ myFunction, title, bgcolor, icon, url }) {
   return (
     <Container type="submit" $bgcolor={bgcolor}>
-      <Icon>{icono}</Icon>
+      <Icon>{icon}</Icon>
 
-      <span className="btn" onClick={funcion}>
+      <span className="btn" onClick={myFunction}>
         <a href={url} target="_blank">
-          {titulo}
+          {title}
         </a>
       </span>
     </Container>

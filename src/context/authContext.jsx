@@ -15,7 +15,7 @@ export const AuthContextProvider = ({children})=>{
 
                 setUser(session?.user);   
             } */       
-          
+              setUser(session?.user);
           })
           
           // call unsubscribe to remove the callback

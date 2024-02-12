@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
+
 export function ToogleTheme() {
   const { setTheme } = useContext(ThemeContext);
   const SwitchTheme = () => {
@@ -9,9 +10,9 @@ export function ToogleTheme() {
   return (
     <Container>
       <div className="container">
-        <label className="toggle">
+        <label className="toggle_th">
           <input
-            id="switch"
+            id="themeSwitch"
             className="input"
             type="checkbox"
             onClick={SwitchTheme}
@@ -122,7 +123,7 @@ export function ToogleTheme() {
   );
 }
 const Container = styled.div`
-  .toggle {
+  .toggle_th {
     width: 46px;
     height: 46px;
     border-radius: 50%;
@@ -153,11 +154,11 @@ const Container = styled.div`
     transform: scale(0);
   }
 
-  #switch:checked + .icon--moon {
+  #themeSwitch:checked + .icon--moon {
     transform: rotate(360deg) scale(0);
   }
 
-  #switch:checked ~ .icon--sun {
+  #themeSwitch:checked ~ .icon--sun {
     transition-delay: 200ms;
     transform: scale(1) rotate(360deg);
   }
