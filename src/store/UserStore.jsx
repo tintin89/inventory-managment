@@ -9,9 +9,13 @@ export const useUserStore = create((get, set) => ({
       password: p.password,
     });
     if (error) return;
-    console.log("data del admin register auth", data);
-    const dataUser = await AddUser({ id_auth: data.user.id, register_date: new Date(), rol: 0 });
-    console.log('data del user added', dataUser);
+
+    const dataUser = await AddUser({
+      id_auth: data.user.id,
+      register_date: new Date(),
+      rol: 0,
+    });
+
     return dataUser;
   },
 }));
