@@ -7,6 +7,8 @@ import { Device } from "./styles/breackpoints";
 import { Sidebar } from "./components/organism/sidebar/Sidebar";
 import { HamburgerMenu } from "./components/organism/HamburgerMenu";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { useLocation } from "react-router-dom";
+import Login from "./pages/Login";
 
 export const ThemeContext = createContext(null);
 
@@ -15,24 +17,30 @@ function App() {
   const theme = themeuse === "light" ? "light" : "dark";
   const themeStyle = theme === "light" ? Light : Dark;
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const {pathname} = useLocation();
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <ThemeProvider theme={themeStyle}>
         <AuthContextProvider>
-          <Container className={sidebarOpen ? "active" : ""}>
-            <section className="ContentSidebar">
-              <Sidebar
-                state={sidebarOpen}
-                setState={() => setSidebarOpen(!sidebarOpen)}
-              />
-            </section>
-            <section className="ContentMenuHam">
-              <HamburgerMenu />
-            </section>
-            <section className="ContentRoutes">
-              <MyRoutes />
-            </section>
-          </Container>
+          {pathname != "/login" ? (
+            <Container className={sidebarOpen ? "active" : ""}>
+              <section className="ContentSidebar">
+                <Sidebar
+                  state={sidebarOpen}
+                  setState={() => setSidebarOpen(!sidebarOpen)}
+                />
+              </section>
+              <section className="ContentMenuHam">
+                <HamburgerMenu />
+              </section>
+              <section className="ContentRoutes">
+                <MyRoutes />
+              </section>
+            </Container>
+          ) : (
+            <Login />
+          )}
+
           <ReactQueryDevtools initialIsOpen={false} />
         </AuthContextProvider>
       </ThemeProvider>
