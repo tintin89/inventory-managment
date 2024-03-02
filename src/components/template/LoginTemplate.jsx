@@ -15,7 +15,7 @@ import { FooterLogin } from "../organism/FooterLogin";
 
 export default function LoginTemplate() {
   const { setTheme } = useContext(ThemeContext);
-  setTheme("light");
+  /*setTheme("light");*/
   const { signInWithEmail } = useAuthStore();
   const [state, setState] = useState(false);
   const [stateStart, setStateStart] = useState(false);
@@ -30,6 +30,7 @@ export default function LoginTemplate() {
     const response = await signInWithEmail({
       email: data.email,
       password: data.password,
+      
     });
     if (response) {
       navigate("/");
@@ -42,7 +43,7 @@ export default function LoginTemplate() {
     <Container>
       <div className="contentLogo">
         <img src={inventoryLogo}></img>
-        <span>StockPRO</span>
+        <span>ManagerPRO</span>
       </div>
       <div className="bannerlateral">
         <img src={carLogo}></img>
@@ -51,12 +52,11 @@ export default function LoginTemplate() {
       <div className="contentCard">
         <div className="card">
           {/*state && <RegistrarAdmin setState={() => setState(!state)} />*/}
-          <Titulo>StockPRO</Titulo>
+          <Titulo>ManagerPro</Titulo>
           {stateStart && <TextoStateInicio>Wrong Data!</TextoStateInicio>}
           <span className="ayuda">
             {" "}
-            Puedes crear una cuenta nueva ó <br></br>solicitar a tu empleador
-            una. <MdOutlineInfo />
+           You can create a new account or <br></br> ask your manager to create one for you.. <MdOutlineInfo />
           </span>
           <p className="frase">Manage your inventory.</p>
           <form onSubmit={handleSubmit(startSignIn)}>
@@ -70,7 +70,7 @@ export default function LoginTemplate() {
                 })}
               />
               <label className="form__label">email</label>
-              {errors.correo?.type === "required" && <p>Required Field</p>}
+              {errors.email?.type === "required" && <p>Required Field</p>}
             </InputText>
             <InputText icon={<v.iconopass/>}>
               <input
@@ -82,7 +82,7 @@ export default function LoginTemplate() {
                 })}
               />
               <label className="form__label">password</label>
-              {errors.pass?.type === "required" && <p>Required Field</p>}
+              {errors.password?.type === "required" && <p>Required Field</p>}
             </InputText>
             <ContainerBtn>
               <Btnsave title="Start" bgcolor="#fc6b32" />
